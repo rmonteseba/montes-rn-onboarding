@@ -64,7 +64,9 @@
     "eslint-plugin-testing-library": "^5.0.5",
     "jest": "^27.5.1",
     "metro-react-native-babel-preset": "^0.68.0",
+    "react-native-flipper": "^0.164.0",
     "react-test-renderer": "17.0.2",
+    "redux-flipper": "^2.0.2",
     "redux-mock-store": "^1.5.4"
   }
 }

@@ -11,9 +11,16 @@ const persistConfig = {
   blacklist: ['error', 'status'],
 };
 
+const middlewares = [thunk.withExtraArgument({ networkService, demoMode: true })];
+
+if (__DEV__) {
+  const createDebugger = require('redux-flipper').default;
+  middlewares.push(createDebugger());
+}
+
 export const store = createStore(
   persistReducer(persistConfig, rootReducer),
-  applyMiddleware(thunk.withExtraArgument({ networkService, demoMode: true }))
+  applyMiddleware(...middlewares)
 );
 
 export const persistor = persistStore(store);
