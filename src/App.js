@@ -10,11 +10,7 @@ import { RootNavigator } from '@/navigation';
 export function App() {
   const handleStoreRehydration = () => {
     const { accessToken } = store.getState().user;
-
-    if (accessToken) {
-      networkService.setAccessToken(accessToken);
-    }
-
+    if (accessToken) networkService.setAccessToken(accessToken);
     hide();
   };
 

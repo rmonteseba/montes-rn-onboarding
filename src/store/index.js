@@ -1,19 +1,14 @@
-import { applyMiddleware, createStore } from 'redux';
-import { persistReducer, persistStore } from 'redux-persist';
+import { persistStore } from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import { networkService } from '@/networking';
-import { rootReducer } from '@/reducers';
-import { storage } from '@/storage';
+import { rootReducer as reducer } from '@/reducers';
 
-const persistConfig = {
-  key: 'root',
-  storage: storage,
-  blacklist: ['error', 'status'],
-};
+const initializeStore = () =>
+  configureStore({
+    reducer,
+    middleware: [thunk.withExtraArgument({ networkService })],
+  });
 
-export const store = createStore(
-  persistReducer(persistConfig, rootReducer),
-  applyMiddleware(thunk.withExtraArgument({ networkService, demoMode: true }))
-);
-
+export const store = initializeStore();
 export const persistor = persistStore(store);

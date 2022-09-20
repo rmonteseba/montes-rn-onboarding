@@ -19,7 +19,7 @@ export function Login() {
   const isLoading = useSelector((state) => isLoadingSelector([TYPES.LOGIN], state));
 
   const handleSubmit = () => {
-    dispatch(login(username, password));
+    dispatch(login({ username, password }));
   };
 
   return (
