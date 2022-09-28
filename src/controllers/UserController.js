@@ -6,7 +6,7 @@ export class UserController {
     this.networkService = networkService;
   }
 
-  login({ username, password, demoMode }) {
+  async login({ username, password, demoMode }) {
     if (demoMode) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {

@@ -1,3 +1,2 @@
-export const getUser = (state) => {
-  return Object.keys(state.user).length > 0 ? state.user : null;
-};
+export const getUserState = (state) => state.user;
+export const getUser = (state) => getUserState(state).user;

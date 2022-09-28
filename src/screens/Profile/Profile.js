@@ -12,9 +12,7 @@ export function Profile() {
   const { colors } = useTheme();
   const dispatch = useDispatch();
 
-  const logoutUser = () => {
-    dispatch(logout());
-  };
+  const logoutUser = () => dispatch(logout());
 
   return (
     <View style={styles.container}>

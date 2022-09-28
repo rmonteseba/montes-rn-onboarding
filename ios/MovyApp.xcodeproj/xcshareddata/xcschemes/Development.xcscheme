@@ -35,7 +35,7 @@
                BlueprintIdentifier = "720A9CBC25E5A9D40074D6D5"
                BuildableName = "RNTemplateDevelopment.app"
                BlueprintName = "Development"
-               ReferencedContainer = "container:rntemplate.xcodeproj">
+               ReferencedContainer = "container:MovyApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -58,16 +58,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "720A9CBC25E5A9D40074D6D5"
-            BuildableName = "RNTemplateDevelopment.app"
-            BlueprintName = "Development"
-            ReferencedContainer = "container:rntemplate.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,16 +65,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "720A9CBC25E5A9D40074D6D5"
             BuildableName = "RNTemplateDevelopment.app"
             BlueprintName = "Development"
-            ReferencedContainer = "container:rntemplate.xcodeproj">
+            ReferencedContainer = "container:MovyApp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
