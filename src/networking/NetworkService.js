@@ -14,7 +14,9 @@ export class NetworkService {
     const config = { ...defaultConfig, ...paramConfig };
     this.client = axios.create(config);
     this.client.interceptors.response.use(resInterceptor.onFulfill, resInterceptor.onReject);
-    if (bearerToken) this.setAccessToken(bearerToken);
+    if (bearerToken) {
+      this.setAccessToken(bearerToken);
+    }
   }
 
   setAccessToken(token) {

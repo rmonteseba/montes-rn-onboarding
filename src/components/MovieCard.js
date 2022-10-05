@@ -1,12 +1,21 @@
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import React from 'react';
+
+const styles = StyleSheet.create({
+  container: {
+    marginVertical: 10,
+  },
+  title: {
+    textAlign: 'center',
+  },
+});
 
 export const MovieCard = (props) => {
   const { original_title: originalTitle } = props;
+
   return (
-    <View style={{ marginVertical: 10 }}>
-      <Text style={{ textAlign: 'center' }}>{originalTitle}</Text>
-      <Text style={{ textAlign: 'center' }}>Here goes the image</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>{originalTitle}</Text>
     </View>
   );
 };
