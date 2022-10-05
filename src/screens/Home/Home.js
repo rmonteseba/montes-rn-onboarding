@@ -1,25 +1,33 @@
-import { useTheme } from '@react-navigation/native';
-import React from 'react';
-import { Text, View } from 'react-native';
-import { Config } from 'react-native-config';
-import { useSelector } from 'react-redux';
-import { strings } from '@/localization';
-import { getUser } from '@/selectors/UserSelectors';
-import { styles } from '@/screens/Home/Home.styles';
-import { typography } from '@/theme';
+import React, { useEffect, useState } from 'react';
+import { Alert, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
-export function Home() {
-  const { colors } = useTheme();
-  const user = useSelector(getUser);
+import { styles } from '@/screens/Home/Home.styles';
+import { getTopRatedMovies } from '@/actions/MovieActions';
+import { getTopRatedMoviesState } from '@/selectors/MovieSelectors';
+import MovieCarousel from '@/components/MovieCarousel';
+
+const Home = () => {
+  const dispatch = useDispatch();
+  const { fulfilled: topRatedMoviesFulfilled, error: topRatedMoviesError } =
+    useSelector(getTopRatedMoviesState);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    dispatch(getTopRatedMovies({ page }));
+  }, [page, dispatch]);
+
+  useEffect(() => {
+    if (topRatedMoviesError) {
+      Alert.alert(topRatedMoviesError); // TODO improve error message :)
+    }
+  }, [topRatedMoviesError]);
 
   return (
     <View style={styles.container}>
-      <Text style={[typography.title, { color: colors.text }]}>
-        {strings.home.message} {user?.username}
-      </Text>
-      <Text style={[typography.text, { color: colors.text }]}>
-        {strings.home.variant} {Config.BUILD_VARIANT}
-      </Text>
+      <MovieCarousel movies={topRatedMoviesFulfilled || []} />
     </View>
   );
-}
+};
+
+export default Home;

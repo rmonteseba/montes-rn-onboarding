@@ -8,7 +8,7 @@ import { strings } from '@/localization';
 import { styles } from '@/screens/Profile/Profile.styles';
 import { typography } from '@/theme';
 
-export function Profile() {
+const Profile = () => {
   const { colors } = useTheme();
   const dispatch = useDispatch();
 
@@ -16,10 +16,9 @@ export function Profile() {
 
   return (
     <View style={styles.container}>
-      <Text style={[typography.title, styles.title, { color: colors.text }]}>
-        {strings.profile.message}
-      </Text>
       <Button title={strings.profile.logout} onPress={logoutUser} />
     </View>
   );
-}
+};
+
+export default Profile;

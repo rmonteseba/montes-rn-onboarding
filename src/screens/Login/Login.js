@@ -10,7 +10,7 @@ import { errorsSelector } from '@/selectors/ErrorSelectors';
 import { isLoadingSelector } from '@/selectors/StatusSelectors';
 import { shadow } from '@/theme';
 
-export function Login() {
+const Login = () => {
   const { colors } = useTheme();
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
@@ -52,4 +52,6 @@ export function Login() {
       </View>
     </View>
   );
-}
+};
+
+export default Login;
