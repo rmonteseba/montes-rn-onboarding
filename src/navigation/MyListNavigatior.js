@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { NAVIGATION } from '@/constants';
-import { Profile } from '@/screens';
+import { MyList } from '@/screens';
 
 const Stack = createNativeStackNavigator();
 
-export function ProfileNavigator() {
+export function MyListNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={NAVIGATION.profile} component={Profile} />
+      <Stack.Screen name={NAVIGATION.myList} component={MyList} />
     </Stack.Navigator>
   );
 }

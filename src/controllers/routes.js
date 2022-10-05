@@ -3,4 +3,9 @@ export const routes = {
     login: '/users',
     logout: '/users/logout',
   },
+  movies: {
+    get: {
+      topRated: '/movie/top_rated',
+    },
+  },
 };

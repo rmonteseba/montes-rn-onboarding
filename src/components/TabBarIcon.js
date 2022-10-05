@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Image } from 'react-native';
-import { homeIcon, settingsIcon } from '@/assets';
-import { NAVIGATION } from '@/constants';
+import { homeIcon, searchIcon, myListIcon, profileIcon } from '@/assets';
+import { TABS } from '@/constants';
 
 const tabIcon = {
-  [NAVIGATION.home]: homeIcon,
-  [NAVIGATION.profile]: settingsIcon,
+  [TABS.home]: homeIcon,
+  [TABS.search]: searchIcon,
+  [TABS.myList]: myListIcon,
+  [TABS.profile]: profileIcon,
 };
 
 export function TabBarIcon({ color, routeName }) {

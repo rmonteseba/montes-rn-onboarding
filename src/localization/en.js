@@ -7,6 +7,8 @@ export const en = {
     header: 'Home',
     message: 'Welcome',
     variant: 'App variant: ',
+    getMoviesError:
+      'Oops!, there was an error loading the movies page, please try again in a few minutes',
   },
   login: {
     username: 'Username',
