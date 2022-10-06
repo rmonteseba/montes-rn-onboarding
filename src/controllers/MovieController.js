@@ -13,4 +13,12 @@ export class MovieController {
       data: { page },
     });
   }
+
+  async getPopularMovies(page = 1) {
+    return this.networkService.request({
+      method: 'get',
+      url: routes.movies.get.popular,
+      data: { page },
+    });
+  }
 }

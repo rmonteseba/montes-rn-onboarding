@@ -1,21 +1,19 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import React from 'react';
+import { MovieThumbnail } from '@/components/MovieThumbnail';
 
-const styles = StyleSheet.create({
+const baseStyles = StyleSheet.create({
   container: {
-    marginVertical: 10,
-  },
-  title: {
-    textAlign: 'center',
+    marginHorizontal: 10,
   },
 });
 
-export const MovieCard = (props) => {
-  const { original_title: originalTitle } = props;
+export const MovieCard = (movie) => {
+  const { poster_path: posterPath } = movie;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{originalTitle}</Text>
+    <View style={baseStyles.container}>
+      <MovieThumbnail path={posterPath} />
     </View>
   );
 };
