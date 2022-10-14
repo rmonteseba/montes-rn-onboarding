@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, View, StyleSheet } from 'react-native';
+import { Alert, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getPopularMovies, getTopRatedMovies } from '@/actions/MovieActions';
 import { getPopularMoviesState, getTopRatedMoviesState } from '@/selectors/MovieSelectors';
 import MovieCarousel from '@/components/MovieCarousel';
 import { strings } from '@/localization';
-
-const baseStyles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  carousel: {
-    base: {
-      marginHorizontal: 20,
-    },
-  },
-});
+import { baseStyles } from '@/screens/Home/Home.styles';
 
 const Home = () => {
   const dispatch = useDispatch();
