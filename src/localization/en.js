@@ -11,6 +11,11 @@ export const en = {
     topFeaturedMovies: 'Top Featured',
     getMoviesError:
       'Oops!, there was an error loading the movies page, please try again in a few minutes',
+    mainCarouselButtons: {
+      myList: 'My List',
+      play: 'Play',
+      info: 'Info',
+    },
   },
   login: {
     username: 'Username',

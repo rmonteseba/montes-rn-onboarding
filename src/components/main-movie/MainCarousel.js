@@ -7,6 +7,7 @@ import MainActionButton from '@/components/main-movie/MainActionButton';
 import AddButton from '@/assets/icons/add_button/add_icon.svg';
 import PlayButton from '@/assets/icons/play_button/play_icon.svg';
 import InfoButton from '@/assets/icons/info_button/info_button.svg';
+import { strings } from '@/localization';
 
 const CAROUSEL_HEIGHT = 450;
 const MOVIES_PER_SLIDE = 1;
@@ -59,9 +60,9 @@ export const MainCarousel = ({ movies, styles }) => {
         />
       </View>
       <View style={baseStyles.actionButtons}>
-        <MainActionButton icon={AddButton} text="My List" />
-        <MainActionButton icon={PlayButton} text="Play" />
-        <MainActionButton icon={InfoButton} text="Info" />
+        <MainActionButton icon={AddButton} text={strings.home.mainCarouselButtons.myList} />
+        <MainActionButton icon={PlayButton} text={strings.home.mainCarouselButtons.play} />
+        <MainActionButton icon={InfoButton} text={strings.home.mainCarouselButtons.info} />
       </View>
     </View>
   );
