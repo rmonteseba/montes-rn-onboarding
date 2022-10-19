@@ -1,7 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 export const baseStyles = StyleSheet.create({
-  container: {
+  headerCarouselContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  carouselsContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },

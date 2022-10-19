@@ -5,6 +5,7 @@ export const routes = {
   },
   movies: {
     get: {
+      upcoming: '/movie/upcoming',
       topRated: '/movie/top_rated',
       popular: '/movie/popular',
     },

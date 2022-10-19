@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getPopularMovies, getTopRatedMovies } from '@/actions/MovieActions';
+import { getUpcomingMovies, getPopularMovies, getTopRatedMovies } from '@/actions/MovieActions';
 
 const initialState = {
   topRatedMovies: {
@@ -9,6 +9,11 @@ const initialState = {
     error: null,
   },
   popularMovies: {
+    fulfilled: null,
+    loading: false,
+    error: null,
+  },
+  upcomingMovies: {
     fulfilled: null,
     loading: false,
     error: null,
@@ -56,6 +61,21 @@ const movieSlice = createSlice({
       state.popularMovies.loading = false;
       state.popularMovies.error = null;
       state.popularMovies.fulfilled = payload; // TODO pages append
+    });
+    builder.addCase(getUpcomingMovies.pending, (state) => {
+      state.upcomingMovies.loading = true;
+      state.upcomingMovies.error = null;
+      state.upcomingMovies.fulfilled = null;
+    });
+    builder.addCase(getUpcomingMovies.rejected, (state, { payload }) => {
+      state.upcomingMovies.loading = false;
+      state.upcomingMovies.error = payload;
+      state.upcomingMovies.fulfilled = null;
+    });
+    builder.addCase(getUpcomingMovies.fulfilled, (state, { payload }) => {
+      state.upcomingMovies.loading = false;
+      state.upcomingMovies.error = null;
+      state.upcomingMovies.fulfilled = payload; // TODO pages append
     });
   },
 });

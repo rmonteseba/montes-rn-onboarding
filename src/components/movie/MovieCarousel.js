@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text } from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-reanimated-carousel';
-import { MovieCard } from '@/components/MovieCard';
+import MovieCard from '@/components/movie/MovieCard';
 import { SCREEN_WIDTH } from '@/lib/utils/dimension-utils/dimensions';
 
 const CAROUSEL_HEIGHT = 180;
@@ -23,6 +23,13 @@ const baseStyles = StyleSheet.create({
     width: SCREEN_WIDTH / MOVIES_PER_SLIDE,
     height: CAROUSEL_HEIGHT,
   },
+  imageStyles: {
+    width: 95,
+    height: 160,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#AAB1B2',
+  },
 });
 
 export const MovieCarousel = ({ movies, title, styles, titleStyles }) => {
@@ -35,7 +42,7 @@ export const MovieCarousel = ({ movies, title, styles, titleStyles }) => {
         height={baseStyles.item.height}
         data={movies}
         scrollAnimationDuration={SCROLL_ANIMATION_DURATION}
-        renderItem={({ item }) => <MovieCard {...item} />}
+        renderItem={({ item }) => <MovieCard movie={item} imageStyles={baseStyles.imageStyles} />}
       />
     </View>
   );

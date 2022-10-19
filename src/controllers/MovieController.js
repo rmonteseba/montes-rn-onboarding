@@ -6,6 +6,14 @@ export class MovieController {
     this.networkService = movieDBNetworkService;
   }
 
+  async getUpcomingMovies(page = 1) {
+    return this.networkService.request({
+      method: 'get',
+      url: routes.movies.get.upcoming,
+      data: { page },
+    });
+  }
+
   async getTopRatedMovies(page = 1) {
     return this.networkService.request({
       method: 'get',
