@@ -2,14 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Alert, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getPopularMovies, getTopRatedMovies } from '@/actions/MovieActions';
-import { getPopularMoviesState, getTopRatedMoviesState } from '@/selectors/MovieSelectors';
-import MovieCarousel from '@/components/MovieCarousel';
+import { ScrollView } from 'react-native-gesture-handler';
+import { getUpcomingMovies, getPopularMovies, getTopRatedMovies } from '@/actions/MovieActions';
+import {
+  getUpcomingMoviesState,
+  getPopularMoviesState,
+  getTopRatedMoviesState,
+} from '@/selectors/MovieSelectors';
+import MovieCarousel from '@/components/movie/MovieCarousel';
 import { strings } from '@/localization';
 import { baseStyles } from '@/screens/Home/Home.styles';
+import MainCarousel from '@/components/main-movie/MainCarousel';
 
 const Home = () => {
   const dispatch = useDispatch();
+
+  const { fulfilled: upcomingMoviesFulfilled, error: upcomingMoviesError } =
+    useSelector(getUpcomingMoviesState);
+
   const { fulfilled: topRatedMoviesFulfilled, error: topRatedMoviesError } =
     useSelector(getTopRatedMoviesState);
 
@@ -19,6 +29,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    dispatch(getUpcomingMovies({ page }));
     dispatch(getTopRatedMovies({ page }));
     dispatch(getPopularMovies({ page }));
   }, [page, dispatch]);
@@ -35,21 +46,35 @@ const Home = () => {
     }
   }, [popularMoviesError]);
 
+  useEffect(() => {
+    if (upcomingMoviesError) {
+      Alert.alert(upcomingMoviesError); // TODO improve error message :)
+    }
+  }, [upcomingMoviesError]);
+
   return (
-    <View style={baseStyles.container}>
-      <MovieCarousel
-        styles={baseStyles.carousel.base}
-        titleStyles={baseStyles.carousel.title}
-        title={strings.home.popularMovies}
-        movies={popularMoviesFulfilled || []}
-      />
-      <MovieCarousel
-        styles={baseStyles.carousel.base}
-        titleStyles={baseStyles.carousel.title}
-        title={strings.home.topFeaturedMovies}
-        movies={topRatedMoviesFulfilled || []}
-      />
-    </View>
+    <ScrollView>
+      <View style={baseStyles.headerCarouselContainer}>
+        <MainCarousel
+          titleStyles={baseStyles.carousel.title}
+          movies={upcomingMoviesFulfilled || []}
+        />
+      </View>
+      <View style={baseStyles.carouselsContainer}>
+        <MovieCarousel
+          styles={baseStyles.carousel.base}
+          titleStyles={baseStyles.carousel.title}
+          title={strings.home.popularMovies}
+          movies={popularMoviesFulfilled || []}
+        />
+        <MovieCarousel
+          styles={baseStyles.carousel.base}
+          titleStyles={baseStyles.carousel.title}
+          title={strings.home.topFeaturedMovies}
+          movies={topRatedMoviesFulfilled || []}
+        />
+      </View>
+    </ScrollView>
   );
 };
 

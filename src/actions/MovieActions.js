@@ -3,6 +3,21 @@ import { strings } from '@/localization';
 import { MovieController } from '@/controllers/MovieController';
 import { clearTopRatedMovies } from '@/reducers/MovieReducer';
 
+export const getUpcomingMovies = createAsyncThunk(
+  'MovieActions/getLatestMovies',
+  async ({ page }, thunkAPI) => {
+    try {
+      const movieController = new MovieController();
+      const {
+        data: { results },
+      } = await movieController.getUpcomingMovies(page);
+      return results;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(strings.home.getMoviesError);
+    }
+  }
+);
+
 export const getTopRatedMovies = createAsyncThunk(
   'MovieActions/getTopRatedMovies',
   async ({ page }, thunkAPI) => {

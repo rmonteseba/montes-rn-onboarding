@@ -5,6 +5,8 @@ export const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
+      black: '#000000',
+      gray: '#7e7e7e',
       primary: '#B0BEC5',
       secondary: '#29434E',
       error: '#D32F2F',
@@ -12,12 +14,15 @@ export const theme = {
       border: '#212121',
       activeTab: '#1976D2',
       inactiveTab: '#757575',
+      cardGradient: '#00000000',
     },
   },
   dark: {
     ...DarkTheme,
     colors: {
       ...DarkTheme.colors,
+      black: '#000000',
+      gray: '#7e7e7e',
       primary: '#212121',
       secondary: '#29434E',
       error: '#D32F2F',
@@ -25,6 +30,7 @@ export const theme = {
       border: '#FFFFFF',
       activeTab: '#4FC3F7',
       inactiveTab: '#FFFFFF',
+      cardGradient: 'rgba(255,255,255,0)',
     },
   },
 };
