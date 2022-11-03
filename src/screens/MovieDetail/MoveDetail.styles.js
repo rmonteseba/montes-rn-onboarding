@@ -29,6 +29,6 @@ export const baseStyles = StyleSheet.create({
     backgroundColor: 'black',
   },
   spinnerTextStyle: {
-    color: '#FFF',
+    color: colors.white,
   },
 });

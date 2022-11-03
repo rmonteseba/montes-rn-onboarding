@@ -5,6 +5,8 @@ export const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
+      black: '#000000',
+      gray: '#7e7e7e',
       primary: '#B0BEC5',
       secondary: '#29434E',
       error: '#D32F2F',
@@ -19,6 +21,8 @@ export const theme = {
     ...DarkTheme,
     colors: {
       ...DarkTheme.colors,
+      black: '#000000',
+      gray: '#7e7e7e',
       primary: '#212121',
       secondary: '#29434E',
       error: '#D32F2F',

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useTheme } from '@react-navigation/native';
+import { spacing } from '@/theme';
 
 const baseStyles = StyleSheet.create({
   container: {
@@ -12,15 +14,16 @@ const baseStyles = StyleSheet.create({
     height: 40,
   },
   text: {
-    paddingVertical: 10,
+    paddingVertical: spacing.s,
   },
 });
 
 const MainActionButton = ({ text, icon: Icon, onPress, active = true }) => {
+  const { colors } = useTheme();
   return (
     <TouchableOpacity accessibilityRole="button" onPress={onPress}>
       <View style={baseStyles.container}>
-        {<Icon {...baseStyles.icon} color={active ? 'black' : 'gray'} />}
+        {<Icon {...baseStyles.icon} color={active ? colors.black : colors.gray} />}
         <Text style={baseStyles.text}>{text}</Text>
       </View>
     </TouchableOpacity>
