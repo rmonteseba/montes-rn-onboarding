@@ -1,9 +1,10 @@
 export const NAVIGATION = {
-  login: 'Login',
-  home: 'Home',
-  search: 'Search',
-  myList: 'My List',
-  profile: 'Profile',
+  login: 'login',
+  home: 'home',
+  movieDetail: 'movie_detail',
+  search: 'search',
+  myList: 'my_list',
+  profile: 'profile',
 };
 
 export const TABS = {

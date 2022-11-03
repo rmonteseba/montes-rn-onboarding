@@ -1,21 +1,22 @@
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import MovieThumbnail from '@/components/movie/MovieThumbnail';
+import MovieThumbnail from './MovieThumbnail';
 import { NAVIGATION } from '@/constants';
 
-const MovieCard = ({ movie, imageStyles }) => {
+const MovieCard = ({ movie, cardStyles, imageStyles }) => {
   const navigation = useNavigation();
-  const { poster_path: posterPath } = movie;
+  const { title, image: imagePath } = movie;
 
   return (
-    <View>
+    <View style={cardStyles}>
       <TouchableOpacity
         accessibilityRole="button"
         onPress={() => navigation.navigate(NAVIGATION.movieDetail, { movieId: movie.id })}
       >
-        <MovieThumbnail path={posterPath} imageStyles={imageStyles} />
+        <MovieThumbnail path={imagePath} imageStyles={imageStyles} />
+        <Text>{title}</Text>
       </TouchableOpacity>
     </View>
   );

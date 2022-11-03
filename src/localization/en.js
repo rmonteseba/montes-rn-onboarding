@@ -4,6 +4,7 @@ export const en = {
     connectionError: 'Connection error',
   },
   home: {
+    screenTitle: 'Home',
     header: 'Home',
     message: 'Welcome',
     variant: 'App variant: ',
@@ -11,10 +12,36 @@ export const en = {
     topFeaturedMovies: 'Top Featured',
     getMoviesError:
       'Oops!, there was an error loading the movies page, please try again in a few minutes',
+    getMovieError:
+      'Oops!, there was an error loading the movie page, please try again in a few minutes',
     mainCarouselButtons: {
       myList: 'My List',
       play: 'Play',
       info: 'Info',
+    },
+  },
+  movieDetail: {
+    screenTitle: 'Movie Detail',
+    genres: {
+      28: 'Action',
+      12: 'Adventure',
+      16: 'Animation',
+      35: 'Comedy',
+      80: 'Crime',
+      99: 'Documentary',
+      18: 'Drama',
+      10751: 'Family',
+      14: 'Fantasy',
+      36: 'History',
+      27: 'Horror',
+      10402: 'Music',
+      9648: 'Mystery',
+      10749: 'Romance',
+      878: 'Science Fiction',
+      10770: 'TV Movie',
+      53: 'Thriller',
+      10752: 'War',
+      37: 'Western',
     },
   },
   login: {
@@ -26,13 +53,18 @@ export const en = {
     invalidCredentials: 'Invalid credentials',
   },
   profile: {
+    screenTitle: 'Profile',
     header: 'Profile',
     logout: 'Logout',
     message: 'This screen has the iOS native large header.',
   },
   search: {
+    screenTitle: 'Search',
     searchPlaceholder: 'Search your favorite titles!',
     searchAccessibilityLabel: 'search',
     searchAccessibilityHint: 'Search your favorite movies',
+  },
+  myList: {
+    screenTitle: 'My List',
   },
 };

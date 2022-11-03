@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const baseStyles = StyleSheet.create({
   container: {
@@ -15,12 +16,14 @@ const baseStyles = StyleSheet.create({
   },
 });
 
-const MainActionButton = ({ text, icon: Icon }) => {
+const MainActionButton = ({ text, icon: Icon, onPress, active = true }) => {
   return (
-    <View style={baseStyles.container}>
-      {<Icon {...baseStyles.icon} />}
-      <Text style={baseStyles.text}>{text}</Text>
-    </View>
+    <TouchableOpacity accessibilityRole="button" onPress={onPress}>
+      <View style={baseStyles.container}>
+        {<Icon {...baseStyles.icon} color={active ? 'black' : 'gray'} />}
+        <Text style={baseStyles.text}>{text}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

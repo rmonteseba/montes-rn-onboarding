@@ -10,7 +10,7 @@ const baseStyles = StyleSheet.create({
 
 const LINEAR_GRADIENT_COORDINATES = { start: { x: 0, y: 0.4 }, end: { x: 0, y: 1 } };
 
-const MovieMainThumbnail = ({ path, resizeMode, imageStyles }) => {
+const MovieMainThumbnail = ({ path, resizeMode = 'contain', imageStyles }) => {
   const { colors } = useTheme();
 
   return (
