@@ -18,10 +18,10 @@ const baseStyles = StyleSheet.create({
   },
 });
 
-const MainActionButton = ({ text, icon: Icon, onPress, active = true }) => {
+const MainActionButton = ({ text, icon: Icon, onPress, active = true, ...props }) => {
   const { colors } = useTheme();
   return (
-    <TouchableOpacity accessibilityRole="button" onPress={onPress}>
+    <TouchableOpacity accessibilityRole="button" onPress={onPress} {...props}>
       <View style={baseStyles.container}>
         {<Icon {...baseStyles.icon} color={active ? colors.black : colors.gray} />}
         <Text style={baseStyles.text}>{text}</Text>

@@ -46,6 +46,6 @@ const {
   actions: { clearCurrentMovie },
 } = currentMovieSlice;
 
-export { clearCurrentMovie };
+export { clearCurrentMovie, initialState };
 
 export default reducer;

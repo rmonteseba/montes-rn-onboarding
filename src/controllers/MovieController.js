@@ -1,39 +1,11 @@
 import { routes } from '@/controllers/routes';
-import { movieDBNetworkService } from '@/networking';
+import movieDBClient from '@/networking/clients/movieDBClient';
 
-export class MovieController {
-  constructor() {
-    this.networkService = movieDBNetworkService;
-  }
+export const getCurrentMovieApiCall = async (movieId) =>
+  movieDBClient.get(`${routes.movies.get.movie}/${movieId}`);
 
-  async getCurrentMovie(movieId) {
-    return this.networkService.request({
-      method: 'get',
-      url: `${routes.movies.get.movie}/${movieId}`,
-    });
-  }
+export const getUpcomingMoviesApiCall = async () => movieDBClient.get(routes.movies.get.upcoming);
 
-  async getUpcomingMovies(page = 1) {
-    return this.networkService.request({
-      method: 'get',
-      url: routes.movies.get.upcoming,
-      data: { page },
-    });
-  }
+export const getTopRatedMoviesApiCall = async () => movieDBClient.get(routes.movies.get.topRated);
 
-  async getTopRatedMovies(page = 1) {
-    return this.networkService.request({
-      method: 'get',
-      url: routes.movies.get.topRated,
-      data: { page },
-    });
-  }
-
-  async getPopularMovies(page = 1) {
-    return this.networkService.request({
-      method: 'get',
-      url: routes.movies.get.popular,
-      data: { page },
-    });
-  }
-}
+export const getPopularMoviesApiCall = async () => movieDBClient.get(routes.movies.get.popular);

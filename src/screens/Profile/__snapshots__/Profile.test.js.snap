@@ -10,24 +10,6 @@ exports[`Profile should match the snapshot 1`] = `
     }
   }
 >
-  <Text
-    style={
-      Array [
-        Object {
-          "fontSize": 18,
-          "fontWeight": "700",
-        },
-        Object {
-          "textAlign": "center",
-        },
-        Object {
-          "color": "rgb(28, 28, 30)",
-        },
-      ]
-    }
-  >
-    This screen has the iOS native large header.
-  </Text>
   <View
     accessible={true}
     collapsable={false}

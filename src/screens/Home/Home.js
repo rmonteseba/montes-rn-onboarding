@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Alert, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -26,13 +26,11 @@ const Home = () => {
   const { fulfilled: popularMoviesFulfilled, error: popularMoviesError } =
     useSelector(getPopularMoviesState);
 
-  const [page, setPage] = useState(1);
-
   useEffect(() => {
-    dispatch(getUpcomingMovies({ page }));
-    dispatch(getTopRatedMovies({ page }));
-    dispatch(getPopularMovies({ page }));
-  }, [page, dispatch]);
+    dispatch(getUpcomingMovies());
+    dispatch(getTopRatedMovies());
+    dispatch(getPopularMovies());
+  }, [dispatch]);
 
   useEffect(() => {
     if (topRatedMoviesError) {
