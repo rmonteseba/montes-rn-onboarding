@@ -199,10 +199,12 @@ android {
             applicationIdSuffix '.staging'
         }
     }
-
     packagingOptions {
-        pickFirst '**/*.so'
+        jniLibs {
+            pickFirsts += ['**/*.so']
+        }
     }
+
 
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
