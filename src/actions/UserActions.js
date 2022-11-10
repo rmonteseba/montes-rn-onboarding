@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { UserController } from '@/controllers';
+import { loginApiCall } from '@/controllers/UserController';
 import { strings } from '@/localization';
 import { logout } from '@/reducers/UserReducer';
 
@@ -15,9 +15,10 @@ export const login = createAsyncThunk(
   'UserActions/login',
   async ({ username, password }, thunkAPI) => {
     try {
-      const userController = new UserController(thunkAPI.extra.networkService);
-      const { data } = await userController.login({ username, password, demoMode: true });
-      return data.user;
+      const {
+        data: { user },
+      } = await loginApiCall({ username, password, demoMode: true });
+      return user;
     } catch (e) {
       thunkAPI.rejectWithValue(e?.data?.error ?? strings.login.invalidCredentials);
     }

@@ -1,16 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { strings } from '@/localization';
-import { MovieController } from '@/controllers/MovieController';
+import {
+  getUpcomingMoviesApiCall,
+  getTopRatedMoviesApiCall,
+  getPopularMoviesApiCall,
+} from '@/controllers/MovieController';
 import { clearTopRatedMovies } from '@/reducers/MovieReducer';
 
 export const getUpcomingMovies = createAsyncThunk(
-  'MovieActions/getLatestMovies',
-  async ({ page }, thunkAPI) => {
+  'MovieActions/getUpcomingMovies',
+  async (_, thunkAPI) => {
     try {
-      const movieController = new MovieController();
       const {
         data: { results },
-      } = await movieController.getUpcomingMovies(page);
+      } = await getUpcomingMoviesApiCall();
       return results;
     } catch (e) {
       return thunkAPI.rejectWithValue(strings.home.getMoviesError);
@@ -20,12 +23,11 @@ export const getUpcomingMovies = createAsyncThunk(
 
 export const getTopRatedMovies = createAsyncThunk(
   'MovieActions/getTopRatedMovies',
-  async ({ page }, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const movieController = new MovieController();
       const {
         data: { results },
-      } = await movieController.getTopRatedMovies(page);
+      } = await getTopRatedMoviesApiCall();
       return results;
     } catch (e) {
       return thunkAPI.rejectWithValue(strings.home.getMoviesError);
@@ -35,12 +37,11 @@ export const getTopRatedMovies = createAsyncThunk(
 
 export const getPopularMovies = createAsyncThunk(
   'MovieActions/getPopularMovies',
-  async ({ page }, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const movieController = new MovieController();
       const {
         data: { results },
-      } = await movieController.getPopularMovies(page);
+      } = await getPopularMoviesApiCall();
       return results;
     } catch (e) {
       return thunkAPI.rejectWithValue(strings.home.getMoviesError);

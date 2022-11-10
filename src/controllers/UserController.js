@@ -1,41 +1,31 @@
 import { routes } from '@/controllers/routes';
 import { strings } from '@/localization';
+import apiClient from '@/networking/clients/apiClient';
 
-export class UserController {
-  constructor(networkService) {
-    this.networkService = networkService;
-  }
-
-  async login({ username, password, demoMode }) {
-    if (demoMode) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (username && password) {
-            resolve({ data: { user: { username } } });
-          } else {
-            reject({ data: { error: strings.login.invalidCredentials } });
-          }
-        }, 250);
-      });
-    }
-
-    return this.networkService.request({
-      method: 'POST',
-      url: routes.authentication.login,
-      data: { username, password },
+export const loginApiCall = async ({ username, password, demoMode }) => {
+  if (demoMode) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (username && password) {
+          resolve({ data: { user: { username } } });
+        } else {
+          reject({ data: { error: strings.login.invalidCredentials } });
+        }
+      }, 250);
     });
   }
 
-  logout({ demoMode } = {}) {
-    if (demoMode) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, 250);
-      });
-    }
+  return apiClient.post(routes.authentication.login, {
+    params: { username, password },
+  });
+};
 
-    return this.networkService.request({
-      method: 'DELETE',
-      url: routes.authentication.logout,
+export const logoutApiCall = async ({ demoMode } = {}) => {
+  if (demoMode) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 250);
     });
   }
-}
+
+  return apiClient.delete(routes.authentication.logout);
+};

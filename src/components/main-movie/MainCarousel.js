@@ -66,6 +66,7 @@ export const MainCarousel = ({ movies, styles }) => {
               movie={item}
               resizeMode={IMAGE_RESIZE_MODE}
               imageStyles={baseStyles.imageStyles}
+              testID="movie-card"
             />
           )}
         />
@@ -90,7 +91,8 @@ export const MainCarousel = ({ movies, styles }) => {
         <MainActionButton
           icon={InfoButton}
           text={strings.home.mainCarouselButtons.info}
-          onPress={() => navigation.navigate(NAVIGATION.movieDetail, { movieId: currentMovie.id })}
+          onPress={() => navigation.navigate(NAVIGATION.movieDetail, { movieId: currentMovie?.id })}
+          testID="movie-detail-btn"
         />
       </View>
     </View>

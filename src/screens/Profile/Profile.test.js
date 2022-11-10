@@ -1,9 +1,9 @@
 import { fireEvent, render } from '@testing-library/react-native';
 import React from 'react';
-import * as UserActions from '@/actions/UserActions';
+import * as UserReducer from '@/reducers/UserReducer';
 import { strings } from '@/localization';
 import { mockLogoutNetworkService } from '@/mocks';
-import { Profile } from '@/screens/Profile/Profile';
+import Profile from '@/screens/Profile/Profile';
 import { withProviders } from '@/test-utils';
 
 describe('Profile', () => {
@@ -20,15 +20,13 @@ describe('Profile', () => {
       withProviders(<Profile />, { networkService: mockLogoutNetworkService })
     );
 
-    const profileTitle = getByText(strings.profile.message);
     const logoutButton = getByText(strings.profile.logout);
 
-    expect(profileTitle).toBeTruthy();
     expect(logoutButton).toBeTruthy();
   });
 
   it('should logout the user', () => {
-    const logoutSpy = jest.spyOn(UserActions, 'logout');
+    const logoutSpy = jest.spyOn(UserReducer, 'logout');
 
     const { getByText } = render(
       withProviders(<Profile />, { networkService: mockLogoutNetworkService })

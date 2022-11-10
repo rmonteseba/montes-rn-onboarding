@@ -1,10 +1,11 @@
-import { render } from '@testing-library/react-native';
+import { render, screen, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import MockAdapter from 'axios-mock-adapter';
 import axios from '@/networking/clients/movieDBClient';
+import MovieDetail from '@/screens/MovieDetail/MovieDetail';
 import { withProviders } from '@/test-utils';
 import { movieResponse } from '@/test-utils/mocks';
-import MyList from '@/screens/MyList/MyList';
+import { initialState as currentMovieInitialState } from '@/reducers/CurrentMovieReducer';
 
 const mockedParams = { movieId: movieResponse.id };
 
@@ -24,23 +25,10 @@ const fakeStore = {
   user: {
     username: 'johndoe',
   },
-  myMovies: {
-    myMovies: [
-      {
-        id: 663712,
-        title: 'The Terrifier 2 - Movie (Original)',
-        image: '/y5Z0WesTjvn59jP6yo459eUsbli.jpg',
-      },
-      {
-        id: 820067,
-        title: 'The Quintessential Quintuplets Movie',
-        image: '/jBIMZ0AlUYuFNsKbd4L6FojWMoy.jpg',
-      },
-    ],
-  },
+  currentMovie: currentMovieInitialState,
 };
 
-describe('MyList', () => {
+describe('MovieDetail', () => {
   let axiosMock;
 
   beforeEach(() => {
@@ -53,7 +41,20 @@ describe('MyList', () => {
   });
 
   it('should match the snapshot', () => {
-    const { toJSON } = render(withProviders(<MyList />, { initialState: fakeStore }));
+    const { toJSON } = render(withProviders(<MovieDetail />, { initialState: fakeStore }));
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should show the movie when the movie is loaded', async () => {
+    const { findByText, toJSON } = render(
+      withProviders(<MovieDetail />, {
+        initialState: fakeStore,
+      })
+    );
+
+    const movieTitle = await findByText(movieResponse.title);
+
+    expect(movieTitle).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
   });
 });
